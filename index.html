@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Test bot</title>
+    <link rel="icon" href="./favicon.ico">
+    <link href="./captch/css/main.css" rel="stylesheet"/>
+</head>
+<body>
+<div class="content_wrapper">
+    <div class="block_captcha">
+        <p>Пожалуйста, укажите свой возраст</p>
+        <div class="image_wrapper">
+            <img id="imgCap" alt="" src="./captch/source/images/cap_img.png">
+        </div>
+        <input type="number"  id="inpInit" placeholder="Введите ответ цифрой" class="input_style">
+        <button id="btnSelect" class="button_style ">Подтвердить</button>
+    </div>
+</div>
+<script src="./captch/js/jquery-3.2.1.min.js"></script>
+
+<script>
+    $(document).ready(function () {
+    let utm = window.location.href.split('?').pop();
+    let minValue = 1;
+    let maxValue = 999;
+    let inpt = $('#inpInit');
+        $('#btnSelect').on('click', function (){
+      let val = Number(inpt.val());
+            if (val >= minValue && val <= maxValue) {
+                window.location.href = './shell/index_1.html?'+utm;
+            } else {
+                alert('Код проверки введен не правильно');
+        console.log(inpt.val());
+            }
+        });
+    });
+</script>
+</body>
+</html>
